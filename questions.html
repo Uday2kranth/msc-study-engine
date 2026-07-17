@@ -6,6 +6,43 @@
     <title>Exam Predictor Model Papers</title>
     <script src="auth.js"></script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .collapsible-card {
+            transition: all 0.3s ease;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            cursor: pointer;
+            gap: 1rem;
+        }
+        .collapse-toggle {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .collapse-toggle:hover {
+            filter: brightness(1.2);
+        }
+        .collapsible-content {
+            display: none;
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,9 +61,18 @@
         </nav>
 
         <!-- ================= SUBJECT AREA: CRYPTOGRAPHY ================= -->
-        <div class="card" style="border-color: var(--accent-danger);">
-            <h2 style="color: #f43f5e; margin-bottom: 0.5rem;">🔒 Paper I: Cryptography (MDS-401)</h2>
-            <p class="subtitle" style="color: #fca5a5; margin-bottom: 1.5rem;">Ultimate High-Yield Question Bank & Full Predicted Exam Papers</p>
+        <div class="card collapsible-card" style="border-color: var(--accent-danger);">
+            <div class="card-header">
+                <div>
+                    <h2 style="color: #f43f5e; margin-bottom: 0.25rem;">🔒 Paper I: Cryptography (MDS-401)</h2>
+                    <p class="subtitle" style="color: #fca5a5; margin: 0;">Ultimate High-Yield Question Bank & Full Predicted Exam Papers</p>
+                </div>
+                <button class="collapse-toggle" style="background: rgba(239, 68, 68, 0.1); border-color: var(--accent-danger); color: #fca5a5;">
+                    <span>Expand</span> <span>🔽</span>
+                </button>
+            </div>
+            
+            <div class="collapsible-content">
             
             <h3 style="color: var(--text-main); margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.25rem;">SECTION 1: HIGH-YIELD QUESTION BANK</h3>
             
@@ -184,12 +230,22 @@
                     <p><strong>Question 10:</strong> (a) Design a comprehensive enterprise defense model against malicious software. Classify the strategic threat differences between computer viruses, worms, and logic bombs, and evaluate the architectural progression of antivirus software from simple string scanning to heuristic and behavioral detection. [Comprehensive] <br><strong style="color:var(--accent-danger)">OR</strong><br> (b) Compare the processing structures of the MD5 and SHA-256 cryptographic hash standards. Walk through the initialization, padding, block length requirements, and compression function iterations, explaining why MD5 fails modern collision resistance evaluations. [Comprehensive]</p>
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- ================= SUBJECT AREA: SENTIMENT ANALYSIS ================= -->
-        <div class="card" style="border-color: #6366f1;">
-            <h2 style="color: #818cf8; margin-bottom: 0.5rem;">🎭 Paper III (A): Sentiment Analysis (MDS-403 A)</h2>
-            <p class="subtitle" style="color: #a5b4fc; margin-bottom: 1.5rem;">Definitive High-Probability Question Bank & 4-Set Prediction Matrix</p>
+        <div class="card collapsible-card" style="border-color: #6366f1;">
+            <div class="card-header">
+                <div>
+                    <h2 style="color: #818cf8; margin-bottom: 0.25rem;">🎭 Paper III (A): Sentiment Analysis (MDS-403 A)</h2>
+                    <p class="subtitle" style="color: #a5b4fc; margin: 0;">Definitive High-Probability Question Bank & 4-Set Prediction Matrix</p>
+                </div>
+                <button class="collapse-toggle" style="background: rgba(99, 102, 241, 0.1); border-color: #6366f1; color: #a5b4fc;">
+                    <span>Expand</span> <span>🔽</span>
+                </button>
+            </div>
+            
+            <div class="collapsible-content">
             
             <h3 style="color: var(--text-main); margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.25rem;">PART 1: THE DEFINITIVE HIGH-PROBABILITY QUESTION BANK</h3>
             
@@ -340,12 +396,22 @@
                     <p><strong>Question 10:</strong> (a) Detail how a data engineer can leverage a Corpus-Based Approach to automatically discover domain-specific sentiment words that standard seed lexicons miss entirely. (Unit-II) <br><strong style="color:#6366f1">OR</strong><br> (b) Formulate an end-to-end strategy for Intention Classification. How does a system extract actionable intent phrases (e.g., 'planning to buy', 'looking for recommendations') out of unstructured social media streams? (Unit-III)</p>
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- ================= SUBJECT AREA: DATA MINING ================= -->
-        <div class="card" style="border-color: var(--accent-primary);">
-            <h2 style="color: #818cf8; margin-bottom: 0.5rem;">📊 Paper II: Data Mining (MDS-402)</h2>
-            <p class="subtitle" style="color: #a5b4fc; margin-bottom: 1.5rem;">Comprehensive High-Yield Question Bank & Predicted Exam Sets</p>
+        <div class="card collapsible-card" style="border-color: var(--accent-primary);">
+            <div class="card-header">
+                <div>
+                    <h2 style="color: #818cf8; margin-bottom: 0.25rem;">📊 Paper II: Data Mining (MDS-402)</h2>
+                    <p class="subtitle" style="color: #a5b4fc; margin: 0;">Comprehensive High-Yield Question Bank & Predicted Exam Sets</p>
+                </div>
+                <button class="collapse-toggle" style="background: rgba(99, 102, 241, 0.1); border-color: var(--accent-primary); color: #a5b4fc;">
+                    <span>Expand</span> <span>🔽</span>
+                </button>
+            </div>
+            
+            <div class="collapsible-content">
             
             <h3 style="color: var(--text-main); margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.25rem;">PART 1: HIGH-YIELD QUESTION BANK BY UNIT</h3>
             
@@ -502,12 +568,22 @@
                     <p><strong>Question 10:</strong> (a) Compare Agglomerative and Divisive clustering patterns. Establish clear algorithmic bounds for why single linkage profiles trigger structural chaining errors across noisy data environments. (Unit-III) <br><strong style="color:var(--accent-primary)">OR</strong><br> (b) Detail how the interestingness threshold framework evaluates rules. Map how advanced metrics like Lift counter traditional confidence flaws when computing cross-item dependency distributions. (Unit-II)</p>
                 </div>
             </div>
+            </div>
         </div>
 
         <!-- ================= SUBJECT AREA: WEB MINING (FULLY DEPLOYED) ================= -->
-        <div class="card" style="border-color: var(--accent-success);">
-            <h2 style="color: #10b981; margin-bottom: 0.5rem;">🌐 Paper IV (B): Web Mining (MDS-404 B)</h2>
-            <p class="subtitle" style="color: #a7f3d0; margin-bottom: 1.5rem;">Comprehensive High-Yield Question Bank & Complete 4-Set Examination Predictions</p>
+        <div class="card collapsible-card" style="border-color: var(--accent-success);">
+            <div class="card-header">
+                <div>
+                    <h2 style="color: #10b981; margin-bottom: 0.25rem;">🌐 Paper IV (B): Web Mining (MDS-404 B)</h2>
+                    <p class="subtitle" style="color: #a7f3d0; margin: 0;">Comprehensive High-Yield Question Bank & Complete 4-Set Examination Predictions</p>
+                </div>
+                <button class="collapse-toggle" style="background: rgba(16, 185, 129, 0.1); border-color: var(--accent-success); color: #a7f3d0;">
+                    <span>Expand</span> <span>🔽</span>
+                </button>
+            </div>
+            
+            <div class="collapsible-content">
             
             <!-- SECTION 1: QUESTION BANK -->
             <h3 style="color: var(--text-main); margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.25rem;">SECTION 1: HIGH-YIELD QUESTION BANK (BY UNIT)</h3>
@@ -713,8 +789,36 @@
                     <p><strong>Question 10:</strong> (a) Detail how Pointwise Mutual Information (PMI) is applied to extract sentiment phrases from web text. Explain how the semantic orientation of a phrase is calculated using anchor words (like "excellent" and "poor"), and discuss the limitations of this lexicon-based method. <br><strong style="color:var(--accent-success)">OR</strong><br> (b) Design the structural workflow of a Meta-Search Engine. Explain the algorithmic strategies used for merging disparate search results, detecting overlapping/duplicate documents, and performing normalized rank aggregation.</p>
                 </div>
             </div>
+            </div>
         </div>
 
     </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".collapsible-card");
+            cards.forEach(card => {
+                const header = card.querySelector(".card-header");
+                const content = card.querySelector(".collapsible-content");
+                const btn = card.querySelector(".collapse-toggle");
+                
+                header.addEventListener("click", function(e) {
+                    // Prevent toggling if user clicks a text selection or link
+                    if (e.target.tagName === "A" || window.getSelection().toString()) {
+                        return;
+                    }
+                    
+                    const isCollapsed = content.style.display === "none" || content.style.display === "";
+                    if (isCollapsed) {
+                        content.style.display = "block";
+                        btn.innerHTML = `<span>Collapse</span> <span>🔼</span>`;
+                    } else {
+                        content.style.display = "none";
+                        btn.innerHTML = `<span>Expand</span> <span>🔽</span>`;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
