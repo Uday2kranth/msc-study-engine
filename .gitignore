@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Local Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel output
+.vercel
+
+# Custom sensitive documents
+vercel-credentials-map.md

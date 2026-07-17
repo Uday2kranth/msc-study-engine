@@ -1,40 +1,38 @@
 // =========================================================================
-// 1. HARDCODED USER ACCESS REGISTRY (Modify your usernames/passwords here)
+// 1. CREDENTIAL REGISTRY (Handed out manually to exactly 6 people)
 // =========================================================================
 const USER_REGISTRY = {
-    "uday_admin": "CryptoMaster2026",  // Your Account
-    "peer_active1": "PassMining99!",   // Peer 1
-    "peer_active2": "TokensWeb442",    // Peer 2
-    "peer_active3": "SentimentKey#1",  // Peer 3
-    "peer_active4": "SecureSyllabus7"  // Peer 4
+    "Admin@uday": "Superm@n62", 
+    "Sai_Kiran": "kiransir@bava",   
+    "Gagan": "gagan@kranthi",    
+    "Aksh": "labbe@kiransir",  
+    "Sai_Ram": "sai@ram",
+    "Tharun": "mama@kiransir"
 };
 
-// Optional: Paste an n8n webhook or simple monitoring URL here to get instant phone alerts when they log in
-const TRACKING_WEBHOOK = "https://your-instance.com/webhook/login-tracker"; 
 
-// =========================================================================
-// 2. SESSION VALIDATION ENGINE
-// =========================================================================
+
+const TRACKING_ENDPOINT = "/api/notify";
+
 document.addEventListener("DOMContentLoaded", function() {
     const currentPath = window.location.pathname;
     const isLoginPage = currentPath.includes("login.html");
     const sessionToken = localStorage.getItem("engine_session_active");
     const loggedUser = localStorage.getItem("engine_session_user");
 
-    // Route Protection: If not logged in and trying to view content, bounce to login
+    // Route Protection Barrier
     if (!sessionToken && !isLoginPage) {
         window.location.href = "login.html";
         return;
     }
 
-    // Anti-Sharing Double Check: Guard against manual token tampering
     if (sessionToken && !USER_REGISTRY[loggedUser]) {
         localStorage.clear();
         window.location.href = "login.html";
         return;
     }
 
-    // Handle Form Submission inside login.html
+    // Login Form Processing
     if (isLoginPage) {
         const loginForm = document.getElementById("loginForm");
         if (loginForm) {
@@ -45,30 +43,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 const errorBlock = document.getElementById("errorBlock");
 
                 if (USER_REGISTRY[inputId] && USER_REGISTRY[inputId] === inputPass) {
-                    // Generate Session Tokens
                     localStorage.setItem("engine_session_active", "true_" + Math.random().toString(36).substring(2));
                     localStorage.setItem("engine_session_user", inputId);
 
-                    // Capture fingerprint metadata to catch password-sharers
-                    const trackingData = {
-                        user: inputId,
-                        device: navigator.userAgent, 
-                        platform: navigator.platform,
-                        time: new Date().toLocaleString()
-                    };
+                    // Send Initial Login Notification
+                    fetch(TRACKING_ENDPOINT, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            eventType: "LOGIN",
+                            user: inputId,
+                            device: navigator.userAgent,
+                            platform: navigator.platform,
+                            time: new Date().toLocaleString()
+                        })
+                    }).catch(() => {});
 
-                    console.log("Access Verified for:", inputId);
-                    
-                    // Fire-and-forget tracking webhook log
-                    if (!TRACKING_WEBHOOK.includes("your-instance")) {
-                        fetch(TRACKING_WEBHOOK, {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(trackingData)
-                        }).catch(() => {/* Suppress local network blocks */});
-                    }
-
-                    // Proceed to main dashboard
                     window.location.href = "index.html";
                 } else {
                     errorBlock.style.display = "block";
@@ -76,9 +66,50 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
+
+    // =========================================================================
+    // 2. TIME-SPENT DURATION TRACKER ENGINE
+    // =========================================================================
+    if (!isLoginPage && loggedUser) {
+        let startTime = Date.now();
+
+        const sendDurationAlert = () => {
+            const endTime = Date.now();
+            const timeSpentSeconds = Math.round((endTime - startTime) / 1000);
+
+            if (timeSpentSeconds > 2) { // Only log if they stay longer than 2 seconds
+                const payload = {
+                    eventType: "DURATION",
+                    user: loggedUser,
+                    page: window.location.pathname.split("/").pop() || "index.html",
+                    duration: timeSpentSeconds,
+                    time: new Date().toLocaleString()
+                };
+
+                // keepalive: true ensures the browser sends this event even if the tab closes
+                fetch(TRACKING_ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                }).catch(() => {});
+            }
+        };
+
+        // Track when user closes the tab, refreshes, or leaves the page
+        window.addEventListener("beforeunload", sendDurationAlert);
+        
+        // Track when user switches tabs or minimizes the browser window
+        document.addEventListener("visibilitychange", function() {
+            if (document.visibilityState === "hidden") {
+                sendDurationAlert();
+            } else {
+                startTime = Date.now(); // Reset timer when they return to the tab
+            }
+        });
+    }
 });
 
-// Structural Logout function to expose to UI elements if desired
 function terminateSession() {
     localStorage.clear();
     window.location.href = "login.html";
