@@ -13,3 +13,5 @@ node_modules/
 
 # Custom sensitive documents
 vercel-credentials-map.md
+scratch/
+

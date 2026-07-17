@@ -5,7 +5,7 @@ const USER_REGISTRY = {
     "Admin@uday": "Superm@n62", 
     "Sai_Kiran": "kiransir@bava",   
     "Gagan": "gagan@kranthi",    
-    "Aksh": "labbe@kiransir",  
+    "Akash": "labbe@kiransir",  
     "Sai_Ram": "sai@ram",
     "Tharun": "mama@kiransir"
 };
