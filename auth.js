@@ -379,4 +379,14 @@ function initializeUiEngine() {
         applyMobileView(nextMobile);
         localStorage.setItem("engine_mobile_view", nextMobile);
     });
+
+    // 6. Logout Handler
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.clear();
+            window.location.href = "login.html";
+        });
+    }
 }
