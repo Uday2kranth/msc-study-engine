@@ -2,19 +2,20 @@
 // 1. CREDENTIAL REGISTRY (Handed out manually to exactly 6 people)
 // =========================================================================
 const USER_REGISTRY = {
-    "Admin@uday": "Superm@n62", 
-    "Sai_Kiran": "kiransir@bava",   
-    "Gagan": "gagan@kranthi",    
-    "Akash": "labbe@kiransir",  
+    "Admin@uday": "Superm@n62",
+    "Sai_Kiran": "kiransir@bava",
+    "Gagan": "gagan@kranthi",
+    "Akash": "labbe@kiransir",
     "Sai_Ram": "sai@ram",
-    "Tharun": "mama@kiransir"
+    "Tharun": "mama@kiransir",
+    "Ban": "DataScientist"
 };
 
 
 
 const TRACKING_ENDPOINT = "/api/notify";
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const isLoginPage = currentPath.includes("login.html");
     const sessionToken = localStorage.getItem("engine_session_active");
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isLoginPage) {
         const loginForm = document.getElementById("loginForm");
         if (loginForm) {
-            loginForm.addEventListener("submit", function(e) {
+            loginForm.addEventListener("submit", function (e) {
                 e.preventDefault();
                 const inputId = document.getElementById("userId").value.trim();
                 const inputPass = document.getElementById("password").value;
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             platform: navigator.platform,
                             time: new Date().toLocaleString()
                         })
-                    }).catch(() => {});
+                    }).catch(() => { });
 
                     window.location.href = "index.html";
                 } else {
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let destinationPage = "Unknown (Closed Tab / Refresh / Left App)";
 
         // Catch where the user is navigating to next
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             const anchor = e.target.closest("a");
             if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
                 destinationPage = anchor.href.split("/").pop() || "index.html";
@@ -106,15 +107,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
                     keepalive: true
-                }).catch(() => {});
+                }).catch(() => { });
             }
         };
 
         // Track when user closes the tab, refreshes, or leaves the page
         window.addEventListener("beforeunload", sendDurationAlert);
-        
+
         // Track when user switches tabs or minimizes the browser window
-        document.addEventListener("visibilitychange", function() {
+        document.addEventListener("visibilitychange", function () {
             if (document.visibilityState === "hidden") {
                 sendDurationAlert();
             } else {
@@ -365,14 +366,14 @@ function initializeUiEngine() {
     applyMobileView(savedMobileView);
 
     // 5. Click Handlers
-    themeToggleBtn.addEventListener("click", function() {
+    themeToggleBtn.addEventListener("click", function () {
         const isCurrentlyLight = document.body.classList.contains("light-theme");
         const nextLight = !isCurrentlyLight;
         applyTheme(nextLight);
         localStorage.setItem("engine_theme_light", nextLight);
     });
 
-    mobileToggleBtn.addEventListener("click", function() {
+    mobileToggleBtn.addEventListener("click", function () {
         const isCurrentlyMobile = document.body.classList.contains("mobile-frame-active");
         const nextMobile = !isCurrentlyMobile;
         applyMobileView(nextMobile);
