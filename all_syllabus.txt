@@ -1,0 +1,67 @@
+M.SC.(DATA SCIENCE) IV-SEMESTER SYLLABUS
+MDS-401:PAPER-I: CRYPTOGRAPHY
+UNIT -I
+Overview of Network Security: OSI Security Architccture, Security Attacks, Security Services, Security Mechanisms, a Model for Network Security. Classical Encryption Techniques: Symmetric Cipher Model, Substitution Techniques, Transposition Techniques, Rotor Machines, Steganography. Block Ciphers:Structure and Data Encryption Standard (DES), Strength of DES. Block Cipher Operation: Double and Triple DES, Electronic Code Book, Cipher Block Chaining Mode, Cipher Feedback Mode, Output Feedback Mode,Counter Mode.
+UNIT –II
+Encryption Standard (AES): Origins, Structure, Round Functions, AES Key Expansion.Pseudorandom Number Generation and Stream Ciphers: Principles, Block Cipher based PRNG, RC4.Public-Key Cryptography: Principles of Public-Key Cryptosystems, RSA Algorithm. Key Management and Distribution:Symmetric and Asymmetric Key Distribution, Public Key Distribution, X.509 Certilicates, Diffie-Hellman Key Exchange.
+UNIT -Ⅱ
+Cryptographic Hash Functions:Applications, SHA & MDS Algorithm. Message Authentication Codes (MAC): requirements, HMAC, CMAC. Digital Signatures: Concepts, NIST Digital Signatures Algorithm. Transport-Level Security: SSL, TLS, HTTPS, SSH. E-Mail Security: Pretty Good Privacy, SMIME.IP Security:Overview, Architecture, Encapsulating Security Payload, Intemet Key Exchange. System Security: Intruders, Intrusion Detection, Password Management, Virus and Countermeasures, Firewall Design Principles and Types.
+REFERENCES:
+1. William Stallings, Cryptography and Network Security – Principles and Practice (6e)
+2.Zhenfu Cao, New Directions of Modern Cryptography
+3.Douglas R. Stinson, Cryptography Theory and Practices
+4. Tom St Denis, Simon Johnson, Cryptography for Developers
+5. Joseph Migga Kizza, A Guide to Computer Network Security
+6. A. Menezes, P. Van Oorschot, S. Vanstone, Handbook of Applied Cryptography
+7.Henk C.A. van Tilborg, Sushil Jajodia, Encyclopedia of Cryptography and Security
+8. Keith M. Martin, Everyday Cryptography-Fundamental Principles and Applications
+
+
+
+M.SC. (DATASCIENCE) IV-SEMESTER SYLLABUS
+MDS-402:PAPER- II: DATA MINING
+UNIT-I
+Introduction to Data Mining and Data Understanding:Data Mining Concepts -Definition, Need for Data Mining, Data Mining Scope - Types of Data to be Mined, Types of Patterns to be Mined, Technologies for Data Mining - Supporting Tools and Techniques, Applications of Data Mining – Targeted Domains and Use Cases, Major Issues in Data Mining – Challenges and Research Directions, Getting to Know Your Data- Data Objects and Attribute Types, Basic Statistical Descriptions of Data, Data Visualization Techniques, Measuring Data Similarity and Dissimilarity.
+UNITHI
+Frequent Pattern Mining and Classification: Frequent Pattern Mining & Associations-Basic Concepts and Methods, Frequent Itemset Mining Techniques, Interestingness of Patterns, Pattern Evaluation Methods, Classification: Basic Methods -Concepts of Classification, Decision Tree Induction, Bayes Classification Methods. Classification: Advanced Methods-Bayesian Belief Networks, Classification by Backpropagation, Support Vector Machines (SVM)
+UNIT-I
+Cluster Analysis and Data Mining Trends: Cluster Analysis: Concepts and Methods-Introduction to Cluster Analysis, Partitioning Methods, Hierarchical Methods, Density-Based Methods, Grid-Based Methods, Evaluation of Clustering. Data Mining Trends and Research Frontiers- Mining Complex Data Types, Alternative Methodologies in Data Mining, Applications of Data Mining, Data Mining and Society, Emerging Trends in Data Mining
+REFERENCES:
+1.Jiawei Han, Micheline Kamber, Jin Pei, Data Mining: Concepts & Technigues, 31
+Edition. Morgon Koffman, 20112.Vikram Pudi P.Radha Krishna, Data Mining, Oxford University press, Ist Edition, 2009.
+3.Pang-Ning Tan, Michael Steinbach, Vipin kumar, Introduction to Data Mining, pearcon Education, 2008.
+
+
+
+
+M.SC. (DATASCIENCE) IV-SEMESTER SYLLABUS
+MDS-403 A: PAPER- III (A): SENTIMENTAL ANALYSIS
+UNIT-I
+Basics & Applications: Introduction, Applications, Research Scope, Sentiment Analysis as Mini NLP. The problem of Sentiment Analysis: Definition & Opinion Summary - Affect, Emotion, and Mood. Deferent types of opinions, Author Vs. Reader standpoint.
+Document-Level sentiment classilication:Supervised and Unsupervised Sentiment classification, Sentiment Rating Prediction, Cross-Domain and Cross-Language Sentiment Classification, Emotion Classification of Documents.
+UNIT-IT
+Subjectivity, Sentence-Level Analysis & Lexicons: Subjectivity & Sentence Sentiment Classification – Sentence Subjectivity, Sentiment Classification, Handling Conditional &Sarcastic Sentences, Cross-Language Classification, Discourse-Based Sentiment, Emotion Classification of Sentences. Sentiment Lexicon Generation – Dictionary-Based Approach, Corpus-Based Approach, Desirable vs. Undesirable Facts.
+UNIT-II
+Comparative Opinions, Summarization & Opinion Quality: Analysis of Comparative Opinions – Problem Definition, Identifying Comparative Sentences, Preferred Entity Set, Types of Comparison, Entity & Aspect Extraction. Opinion Summarization & Search -Aspect-Based Summarization, Contrastive View, Traditional Summarization, Summarization of Comparative Opinions, Opinion Search & Retrieval Techniques. Mining Intentions -Intention Mining Problem, Intention Classification, Fine-Grained Mining. Fake & Low-Quality Opinions – Fake/Deceptive Opinion Detection (Spam Types, Supervised Detection, Behavioral Analysis, Group Spam, Multiple IDs, Business Exploitation), Quality of Reviews (Regression Approach & Other Methods). 
+REFERENCES
+1. Bing Liu "Sentiment Analysis University Press, 2015. Mining Opinions, Sentiments and
+Emotions, Cambridge
+
+
+
+M.SC. (DATASCIENCE) IV-SEMESTER SYLLABUS
+MDS-404 B: PAPER- IV (B):WEB MINING
+UNIT-I
+Web Data Mining & Data Mining Foundations: Introduction to WWW, Web Mining, and Data Mining, Association Rule Mining - Apriori Algorithm, Frequent Itemset & Rule Generation, Multiple Minimum Supports, Class Association Rules. Sequential Pattern Mining - GSP, PrefixSpan, Rule Generation from Patterns
+UNIT- II
+Machine Learming for Web Mining: Supervised Learming – Decision Trees, Rule Induction, Classification based on Associations, Naïve Bayes & Text Classification.Unsupervised Learming - K-means Clustering, Hierarchical Clustering (Single Link, Complete Link, Average Link), Strengths & Weakmnesses
+UNIT-I
+Information Retrieval, Link Analysis & Web Crawling: Information Retrieval - Boolean Model, Vector Space Model, Statistical Language Model, Relevance Feedback, Evaluation Measures. Text & Web Page Preprocessing – Stopword Removal, Stemming, Duplicate Detection, Inverted Index & Compression, Latent Semantic Indexing. Web Search & Issues -Web Search, Meta Search, Web Spamming. Link Analysis – PageRank, HITS, Community Discovery. Web Crawling - Crawler Algorithms (BFS, Focused, Topical), Implementation Issues, Ethics. Sentiment Classification – Sentiment Phrases, Text Classification Methods.
+REFERENCES：
+1.Web Data Mining: Exploring Hyperlinks, Contents, and Usage Data by Bing Liu
+(Springer Publications)
+2.Data Mining:Concepts and Technigues, Second Edition Jiawei Han, Micheline
+Kamber (Elsevier Publications)
+3. Web Mining:: Applications and Techniques by Anthony Scime
+4.Mining the Web: Discovering Knowledge from Hypertext Data by Soumen
+Chakrabarti

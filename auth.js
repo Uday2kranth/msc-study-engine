@@ -72,16 +72,30 @@ document.addEventListener("DOMContentLoaded", function() {
     // =========================================================================
     if (!isLoginPage && loggedUser) {
         let startTime = Date.now();
+        let hasSentAlertForThisActivePeriod = false;
+        let destinationPage = "Unknown (Closed Tab / Refresh / Left App)";
+
+        // Catch where the user is navigating to next
+        document.addEventListener("click", function(e) {
+            const anchor = e.target.closest("a");
+            if (anchor && anchor.href && anchor.href.startsWith(window.location.origin)) {
+                destinationPage = anchor.href.split("/").pop() || "index.html";
+            }
+        });
 
         const sendDurationAlert = () => {
+            if (hasSentAlertForThisActivePeriod) return; // Prevent double alerts!
+
             const endTime = Date.now();
             const timeSpentSeconds = Math.round((endTime - startTime) / 1000);
 
-            if (timeSpentSeconds > 2) { // Only log if they stay longer than 2 seconds
+            if (timeSpentSeconds > 2) {
+                hasSentAlertForThisActivePeriod = true;
                 const payload = {
                     eventType: "DURATION",
                     user: loggedUser,
                     page: window.location.pathname.split("/").pop() || "index.html",
+                    nextPage: destinationPage,
                     duration: timeSpentSeconds,
                     time: new Date().toLocaleString()
                 };
@@ -104,7 +118,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (document.visibilityState === "hidden") {
                 sendDurationAlert();
             } else {
-                startTime = Date.now(); // Reset timer when they return to the tab
+                // Reset states when they return to the tab
+                startTime = Date.now();
+                hasSentAlertForThisActivePeriod = false;
+                destinationPage = "Unknown (Closed Tab / Refresh / Left App)";
             }
         });
     }
@@ -310,8 +327,6 @@ function initializeUiEngine() {
 
     const themeToggleBtn = document.getElementById("themeToggleBtn");
     const mobileToggleBtn = document.getElementById("mobileToggleBtn");
-    const headerThemeBtn = document.getElementById("headerThemeToggleBtn");
-    const headerMobileBtn = document.getElementById("headerMobileToggleBtn");
 
     // 3. Functions to apply states
     const applyTheme = (isLight) => {
@@ -320,19 +335,11 @@ function initializeUiEngine() {
             document.documentElement.classList.add("light-theme");
             themeToggleBtn.classList.add("active");
             themeToggleBtn.innerHTML = `<span>🌙</span> Dark Mode`;
-            if (headerThemeBtn) {
-                headerThemeBtn.classList.add("active");
-                headerThemeBtn.innerHTML = `<span>🌙</span> Dark Mode`;
-            }
         } else {
             document.body.classList.remove("light-theme");
             document.documentElement.classList.remove("light-theme");
             themeToggleBtn.classList.remove("active");
             themeToggleBtn.innerHTML = `<span>☀️</span> Light Mode`;
-            if (headerThemeBtn) {
-                headerThemeBtn.classList.remove("active");
-                headerThemeBtn.innerHTML = `<span>☀️</span> Light Mode`;
-            }
         }
     };
 
@@ -342,19 +349,11 @@ function initializeUiEngine() {
             document.documentElement.classList.add("mobile-html-locked");
             mobileToggleBtn.classList.add("active");
             mobileToggleBtn.innerHTML = `<span>🖥️</span> Desktop View`;
-            if (headerMobileBtn) {
-                headerMobileBtn.classList.add("active");
-                headerMobileBtn.innerHTML = `<span>🖥️</span> Desktop View`;
-            }
         } else {
             document.body.classList.remove("mobile-frame-active");
             document.documentElement.classList.remove("mobile-html-locked");
             mobileToggleBtn.classList.remove("active");
             mobileToggleBtn.innerHTML = `<span>📱</span> Mobile View`;
-            if (headerMobileBtn) {
-                headerMobileBtn.classList.remove("active");
-                headerMobileBtn.innerHTML = `<span>📱</span> Mobile View`;
-            }
         }
     };
 
@@ -366,27 +365,17 @@ function initializeUiEngine() {
     applyMobileView(savedMobileView);
 
     // 5. Click Handlers
-    const handleThemeClick = () => {
+    themeToggleBtn.addEventListener("click", function() {
         const isCurrentlyLight = document.body.classList.contains("light-theme");
         const nextLight = !isCurrentlyLight;
         applyTheme(nextLight);
         localStorage.setItem("engine_theme_light", nextLight);
-    };
+    });
 
-    const handleMobileClick = () => {
+    mobileToggleBtn.addEventListener("click", function() {
         const isCurrentlyMobile = document.body.classList.contains("mobile-frame-active");
         const nextMobile = !isCurrentlyMobile;
         applyMobileView(nextMobile);
         localStorage.setItem("engine_mobile_view", nextMobile);
-    };
-
-    themeToggleBtn.addEventListener("click", handleThemeClick);
-    mobileToggleBtn.addEventListener("click", handleMobileClick);
-
-    if (headerThemeBtn) {
-        headerThemeBtn.addEventListener("click", handleThemeClick);
-    }
-    if (headerMobileBtn) {
-        headerMobileBtn.addEventListener("click", handleMobileClick);
-    }
+    });
 }

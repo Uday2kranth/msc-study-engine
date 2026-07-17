@@ -108,6 +108,7 @@ module.exports = async (req, res) => {
         emailText = `User Activity Summary Report:\n\n` +
                     `Account Holder: ${data.user}\n` +
                     `Target File/Page: ${data.page}\n` +
+                    `Navigated To: ${data.nextPage || 'Unknown'}\n` +
                     `Active Time Spent: ${readableTime} (${data.duration} total seconds)\n` +
                     `Exit Timestamp: ${data.time}\n\n` +
                     `--- NETWORK & LOCATION INFORMATION ---\n` +
